@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrar - Cantina Inteligente</title>
+      <link rel="stylesheet" href="{% static 'CSS/style_login2.css' %}">
+</head>
+<body>
+
+  <header class="topo">
+    <a href="{% url 'home' %}" class="btn-voltar">←</a>
+    <h1>Entrar</h1>
+    <img src="{% static 'MEDIA/logo.png' %}" class="logo-topo" alt="logo">
+  </header>
+
+  <main class="conteudo">
+    <section class="esquerda">
+      <div class="mensagem">
+        <p>
+          Bem-vindo(a) à <strong>Cantina Inteligente</strong>!
+          Acesse sua conta para gerenciar seus pedidos e aproveitar
+          a praticidade da nossa tecnologia.
+        </p>
+      </div>
+    </section>
+
+    <section class="direita">
+      <div class="card">
+<form method="post">
+    {% csrf_token %}
+    <label>E-mail</label>
+    <input type="text" name="username" placeholder="Digite seu E-mail" required>
+
+    <label>Senha</label>
+    <input type="password" name="password" placeholder="Digite sua Senha" required>
+
+    <button type="submit">Entrar</button>
+</form>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    Cantina-Inteligente
+  </footer>
+
+<script src="{% static 'JS/script_tela_login.js' %}" defer></script>
+</body>
+</html>

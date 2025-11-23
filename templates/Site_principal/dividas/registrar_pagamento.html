@@ -1,0 +1,26 @@
+{% block content %}
+<div class="container mt-4">
+  <h2>Registrar Pagamento — {{ usuario.nome }}</h2>
+  <p><strong>Total devido:</strong> R$ {{ total_devido|floatformat:2 }}</p>
+
+  <form method="POST">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="forma_pagamento" class="form-label">Forma de pagamento:</label>
+      <select class="form-select" name="forma_pagamento" required>
+        <option value="Dinheiro">Dinheiro</option>
+        <option value="Pix">Pix</option>
+        <option value="Cartão">Cartão</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="valor_pago" class="form-label">Valor pago:</label>
+      <input type="number" name="valor_pago" class="form-control" step="0.01" min="0" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Confirmar Pagamento</button>
+    <a href="{% url 'adm_dashboard' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Registrar-se - Cantina Inteligente</title>
+    <link rel="stylesheet" href="{% static 'CSS/style_registrar1.css' %}">
+</head>
+<body>
+
+  <header class="top-bar">
+    <a href="{% url 'home' %}" class="btn-voltar">←</a>
+    <h1>Registrar-se</h1>
+    <img src="{% static 'MEDIA/logo.png' %}" class="logo-topo" alt="logo">
+  </header>
+
+  <main class="main-content">
+
+    <section class="text-section">
+      <p class="welcome-text">
+        Junte-se à Cantina Inteligente e facilite seu dia a dia com tecnologia e praticidade. Cadastre-se agora e faça parte dessa inovação!
+      </p>
+    </section>
+
+    <section class="form-section">
+        <form method="post" class="form-registrar">
+            {% csrf_token %}
+
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="nome" placeholder="Digite seu nome" required />
+
+            <label for="matricula">Matrícula</label>
+            <input type="text" name="matricula" id="matricula" placeholder="Digite sua matrícula" required />
+
+            <label for="telefone">Telefone</label>
+            <input type="tel" name="telefone" id="telefone" placeholder="Digite seu telefone" required />
+
+            <label for="telefoneResp">Telefone Responsável</label>
+            <input type="tel" name="telefone_responsavel" id="telefoneResp" placeholder="Digite o telefone do seu responsável" />
+
+            <label for="email">E-mail</label>
+            <input type="email" name="email" id="email" placeholder="Digite seu E-mail" required />
+
+            <label for="senha">Senha</label>
+            <input type="password" name="senha" id="senha" placeholder="Digite sua senha" required />
+
+            <label for="senhaConfirm">Confirme a senha</label>
+            <input type="password" name="senhaConfirm" id="senhaConfirm" placeholder="Digite novamente sua senha" required />
+
+            <button type="submit" class="btn registrar">Registrar-se</button>
+
+            {% if erro %}
+                <p style="color: red;">{{ erro }}</p>
+            {% endif %}
+        </form>
+
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    Cantina-Inteligente
+  </footer>
+
+<script src="{% static 'JS/script_registrar.js' %}" defer></script>
+
+</body>
+</html>

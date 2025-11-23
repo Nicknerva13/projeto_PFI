@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Produto</title>
+  <link rel="stylesheet" href="{% static 'CSS/style_editar_produto.css' %}">
+</head>
+<body>
+
+<header>
+  <a href="{% url 'listar_produtos' %}" class="btn-voltar">← Voltar</a>
+  <h1>Editar Produto</h1>
+  <img src="{% static 'media/logo.png' %}" class="logo-topo">
+</header>
+
+<main>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <label>Nome:</label>
+    <input type="text" name="nome" value="{{ produto.nome }}" required>
+
+    <label>Preço de Compra (R$):</label>
+    <input type="number" step="0.50" name="preco_compra"
+           value="{{ produto.preco_compra|stringformat:"0.2f" }}">
+
+    <label>Preço de Venda (R$):</label>
+    <input type="number" step="0.50" name="preco_venda"
+           value="{{ produto.preco_venda|stringformat:"0.2f" }}">
+
+    <label>Estoque:</label>
+    <input type="number" name="estoque" value="{{ produto.estoque }}" required>
+
+    <label>Foto atual:</label>
+    {% if produto.foto %}
+      <img src="{{ produto.foto.url }}" alt="Foto do produto">
+    {% else %}
+      <p>Sem foto cadastrada</p>
+    {% endif %}
+
+    <label>Alterar foto:</label>
+    <input type="file" name="foto">
+
+    <button type="submit">Salvar Alterações</button>
+
+  </form>
+</main>
+
+</body>
+</html>

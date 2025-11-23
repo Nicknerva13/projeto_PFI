@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lista de Produtos - Cantina Inteligente</title>
+
+  <link rel="stylesheet" href="{% static 'CSS/style_lista_produtos.css' %}">
+</head>
+
+<body>
+
+  <!-- TOPO -->
+  <header class="topo">
+    <h1>Lista de Produtos</h1>
+  </header>
+
+  <!-- CONTEÚDO -->
+  <main>
+    <div class="btn-container">
+      <a href="{% url 'adm_dashboard' %}" class="btn btn-voltar">← Voltar</a>
+      <a href="{% url 'adicionar_produto' %}" class="btn btn-adicionar">Adicionar Produto</a>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Foto</th>
+          <th>Nome</th>
+          <th>Preço Compra</th>
+          <th>Preço Venda</th>
+          <th>Estoque</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for produto in produtos %}
+        <tr>
+          <td>{{ produto.id }}</td>
+
+          <td>
+            {% if produto.foto %}
+              <img src="{{ produto.foto.url }}" alt="Foto" class="foto-produto">
+            {% else %}
+              <span>Sem foto</span>
+            {% endif %}
+          </td>
+
+          <td>{{ produto.nome }}</td>
+
+          <td>R$ {{ produto.preco_compra }}</td>
+          <td>R$ {{ produto.preco_venda }}</td>
+
+          <td>{{ produto.estoque }}</td>
+
+          <td class="acoes">
+            <button class="btn-editar" onclick="window.location.href='{% url 'editar_produto' produto.id %}'">Editar</button>
+            <button class="btn-estoque" onclick="window.location.href='{% url 'adicionar_estoque' produto.id %}'">Estoque</button>
+            <button class="btn-excluir" onclick="window.location.href='{% url 'excluir_produto' produto.id %}'">Excluir</button>
+          </td>
+        </tr>
+
+        {% empty %}
+        <tr>
+          <td colspan="7">Nenhum produto cadastrado.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  </main>
+
+  <!-- RODAPÉ FIXO -->
+  <footer>
+    Cantina-Inteligente
+  </footer>
+
+</body>
+</html>

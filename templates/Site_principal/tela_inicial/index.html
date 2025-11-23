@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cantina Inteligente</title>
+
+  <link rel="stylesheet" href="{% static 'CSS/style_inicial.css' %}">
+</head>
+<body>
+
+  <header class="top-bar">
+    <div class="top-buttons">
+      <button class="btn azul" onclick="irParaLogin()">Entrar</button>
+      <button class="btn preto" onclick="irParaRegistro()">Registrar-se</button>
+    </div>
+  </header>
+
+  <main class="main-content">
+
+    <!-- Carrossel -->
+    <section class="carousel">
+      {% if imagens %}
+        {% for imagem in imagens %}
+          <div class="slide {% if forloop.first %}active{% endif %}">
+            <img src="{{ imagem.imagem.url }}" alt="{{ imagem.titulo }}">
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="slide active">
+          <img src="{% static 'MEDIA/logo.png' %}" alt="Imagem padrão">
+        </div>
+      {% endif %}
+    </section>
+
+    <!-- Texto informativo -->
+    <section class="info">
+      <p class="mensagem">
+        <strong>Seja bem-vindo ao site<br>
+        <span class="destaque">Cantina Inteligente</span></strong><br>
+        Faça login ou registre-se <br>
+        para começar a usar este<br>
+        incrível site inovador
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    Cantina-Inteligente
+  </footer>
+
+  <script src="{% static 'JS/script_tela_inicial.js' %}"></script>
+</body>
+</html>

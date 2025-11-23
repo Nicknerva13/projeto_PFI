@@ -1,0 +1,175 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios - Cantina Inteligente</title>
+
+    <link rel="stylesheet" href="{% static 'CSS/style_relatorio.css' %}">
+</head>
+
+<body>
+
+    <!-- TOPO -->
+    <header class="topo">
+        <a href="{% url 'adm_dashboard' %}" class="btn-voltar">←</a>
+
+        <h1>Relatórios da Cantina</h1>
+
+        <img src="{% static 'media/logo.png' %}" alt="Logo" class="logo-topo">
+    </header>
+
+    <main class="conteudo">
+
+        <!-- Controles -->
+        <section class="controls">
+            <label>Período:
+                <select id="periodo">
+                    <option value="hoje" {% if periodo|default:"hoje" == "hoje" %}selected{% endif %}>Hoje</option>
+                    <option value="5d" {% if periodo == "5d" %}selected{% endif %}>Últimos 5 dias</option>
+                    <option value="10d" {% if periodo == "10d" %}selected{% endif %}>Últimos 10 dias</option>
+                    <option value="1m" {% if periodo == "1m" %}selected{% endif %}>Último 1 mês</option>
+                    <option value="6m" {% if periodo == "6m" %}selected{% endif %}>Últimos 6 meses</option>
+                    <option value="1a" {% if periodo == "1a" %}selected{% endif %}>Último 1 ano</option>
+                    <option value="2a" {% if periodo == "2a" %}selected{% endif %}>Últimos 2 anos</option>
+                    <option value="3a" {% if periodo == "3a" %}selected{% endif %}>Últimos 3 anos</option>
+                </select>
+            </label>
+
+            <button class="btn azul"
+                onclick="window.location.href='{% url 'gerar_relatorio' %}?periodo=' + document.getElementById('periodo').value">
+                Gerar
+            </button>
+
+            <button class="btn verde"
+                onclick="window.location.href='{% url 'exportar_relatorio' %}?periodo=' + document.getElementById('periodo').value">
+                Exportar XLSX
+            </button>
+
+            <button class="btn vermelho" onclick="window.location.href='{% url 'adm_dashboard' %}'">
+                Voltar
+            </button>
+        </section>
+
+        <!-- Tabelas -->
+        <div class="tables-container">
+
+            <section class="table-wrap">
+                <h2>Resumo Financeiro por Cliente</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Matrícula</th>
+                            <th>Dívida (R$)</th>
+                            <th>Total Compras (R$)</th>
+                            <th>Fiado (R$)</th>
+                            <th>Pago (R$)</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for pessoa in resumo_clientes %}
+                        <tr>
+                            <td>{{ pessoa.nome }}</td>
+                            <td>{{ pessoa.matricula }}</td>
+                            <td>{{ pessoa.divida|floatformat:2 }}</td>
+                            <td>{{ pessoa.total_compras|floatformat:2 }}</td>
+                            <td>{{ pessoa.total_fiado|floatformat:2 }}</td>
+                            <td>{{ pessoa.total_pago|floatformat:2 }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr><td colspan="6">Nenhum dado encontrado.</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="table-wrap">
+    <h2>Vendas Detalhadas</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Cliente</th>
+                <th>Vendedor</th>
+                <th>Total (R$)</th>
+                <th>Pagamento</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for venda in vendas %}
+            <tr>
+                <td>{{ venda.data }}</td>
+                <td>{{ venda.usuario.nome }}</td>
+                <td>{{ venda.vendedor.nome }}</td> <!-- CORREÇÃO -->
+                <td>{{ venda.valor_total|floatformat:2 }}</td>
+                <td>{{ venda.metodo_pagamento }}</td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="5">Nenhuma venda encontrada.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+
+
+            <section class="table-wrap">
+                <h2>Entradas de Estoque</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Produto</th>
+                            <th>Quantidade</th>
+                            <th>Preço Unitário (R$)</th>
+                            <th>Valor Total (R$)</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for entrada in entradas %}
+                        <tr>
+                            <td>{{ entrada.data }}</td>
+                            <td>{{ entrada.produto.nome }}</td>
+                            <td>{{ entrada.quantidade }}</td>
+                            <td>{{ entrada.preco_unitario|floatformat:2 }}</td>
+                            <td>{{ entrada.valor_total|floatformat:"2" }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr><td colspan="5">Nenhuma entrada no estoque.</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="table-wrap">
+                <h2>Resumo Geral</h2>
+
+                <table>
+                    <tbody>
+                        <tr><td>Total Fiado (R$)</td><td>{{ total_fiado|floatformat:2 }}</td></tr>
+                        <tr><td>Total Pago (R$)</td><td>{{ total_pago|floatformat:2 }}</td></tr>
+                        <tr><td>Total Vendas (R$)</td><td>{{ total_vendas|floatformat:2 }}</td></tr>
+                        <tr><td>Total Gasto Estoque (R$)</td><td>{{ total_gasto_estoque|floatformat:2 }}</td></tr>
+                        <tr><td>Lucro / Prejuízo (R$)</td><td>{{ lucro_prejuizo|floatformat:2 }}</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="rodape">
+        Cantina Inteligente © 2025
+    </footer>
+<script src="{% static 'JS/script_relatorio.js' %}" defer></script>
+
+</body>
+
+</html>

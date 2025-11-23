@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico Geral - ADM</title>
+
+    <!-- CSS externo -->
+    <link rel="stylesheet" href="{% static 'CSS/style_historico_adm.css' %}">
+</head>
+
+<body>
+
+    <!-- TOPO -->
+    <header class="topo">
+        <!-- Botão voltar → vai especificamente para o painel ADM -->
+        <a href="{% url 'adm_dashboard' %}" class="btn-voltar">←</a>
+
+        <h1>Histórico Geral</h1>
+
+        <!-- Logo no canto superior direito -->
+        <img src="{% static 'media/logo.png' %}" alt="Logo" class="logo-topo">
+    </header>
+
+    <main class="conteudo">
+
+        {% if historico %}
+            {% for venda in historico %}
+                <div class="card-venda">
+
+                    <h3>Compra #{{ venda.id }} - {{ venda.data|date:"d/m/Y H:i" }}</h3>
+
+                    <p><strong>Usuário:</strong> {{ venda.usuario.nome }}
+                    (Matrícula: {{ venda.usuario.matricula }})</p>
+
+                    <p><strong>Total:</strong> R$ {{ venda.valor_total|floatformat:2 }}</p>
+
+                    <p><strong>Método de Pagamento:</strong> {{ venda.metodo_pagamento }}</p>
+
+                    <h4>Itens:</h4>
+                    <ul>
+                        {% for item in venda.itens.all %}
+                            <li>
+                                {{ item.produto.nome }} — {{ item.quantidade }}x —
+                                R$ {{ item.preco_unitario|floatformat:2 }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="nenhum">Nenhuma compra encontrada no sistema.</p>
+        {% endif %}
+
+    </main>
+
+    <!-- RODAPÉ FIXO -->
+    <footer class="rodape">
+        Cantina Inteligente
+    </footer>
+
+</body>
+
+</html>

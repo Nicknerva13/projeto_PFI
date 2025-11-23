@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Meus Dados</title>
+
+    <!-- CSS Externo -->
+    <link rel="stylesheet" href="{% static 'CSS/style_editar_meus_dados.css' %}">
+</head>
+<body>
+
+<header>
+    <a class="btn-voltar" href="{% url 'cliente' %}">← Voltar</a>
+    <h1>Editar Meus Dados</h1>
+    <img src="{% static 'media/logo.png' %}" class="logo" alt="Logo">
+</header>
+
+<main>
+    <div class="container">
+
+        {% if messages %}
+            {% for m in messages %}
+                <p class="msg">{{ m }}</p>
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- Foto Atual -->
+            {% if usuario.foto %}
+                <div class="foto-usuario">
+                    <img src="{{ usuario.foto.url }}" alt="Foto do usuário">
+                </div>
+            {% endif %}
+
+            <!-- Upload de nova foto -->
+            <label>Foto:</label>
+            <input type="file" name="foto" accept="image/*">
+
+            <label>Nome:</label>
+            <input type="text" name="nome" value="{{ usuario.nome }}" required>
+
+            <label>Matrícula:</label>
+            <input type="text" value="{{ usuario.matricula }}" readonly>
+
+            <label>Telefone:</label>
+            <input type="text" name="telefone" value="{{ usuario.telefone }}">
+
+            <label>Telefone do Responsável:</label>
+            <input type="text" name="telefone_responsavel" value="{{ usuario.telefone_responsavel }}">
+
+            <label>Email:</label>
+            <input type="email" name="email" value="{{ usuario.email }}" required>
+
+            <label>Senha:</label>
+            <input type="password" name="senha" placeholder="Digite uma nova senha (opcional)">
+
+            <button type="submit">Salvar Alterações</button>
+        </form>
+
+    </div>
+</main>
+
+<footer>
+    Cantina-Inteligente
+</footer>
+
+</body>
+</html>

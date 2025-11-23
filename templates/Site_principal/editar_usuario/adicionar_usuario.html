@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adicionar Usuário</title>
+
+  <!-- CSS externo -->
+  <link rel="stylesheet" href="{% static 'CSS/style_adicionar_usuario.css' %}">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="topo">
+      <button class="btn-voltar" onclick="window.location.href='{% url 'listar_usuarios' %}'">←</button>
+      <h1>Adicionar Usuário</h1>
+      <img src="{% static 'media/logo.png' %}" class="logo-topo" alt="Logo">
+  </header>
+
+  <main class="conteudo">
+
+      <div class="card-container">
+
+          <!-- MENSAGENS -->
+          {% if messages %}
+              <ul class="messages">
+                  {% for message in messages %}
+                      <li>{{ message }}</li>
+                  {% endfor %}
+              </ul>
+          {% endif %}
+
+          <form method="post" class="form-adicionar">
+              {% csrf_token %}
+
+              <label>Nome:</label>
+              <input type="text" name="nome" required>
+
+              <label>Matrícula:</label>
+              <input type="text" name="matricula" required>
+
+              <label>Telefone:</label>
+              <input type="text" name="telefone">
+
+              <label>Telefone do Responsável:</label>
+              <input type="text" name="telefone_responsavel">
+
+              <label>Email:</label>
+              <input type="email" name="email" required>
+
+              <label>Senha:</label>
+              <input type="password" name="senha" required>
+
+              <div class="linha-check">
+                <label>É administrador?</label>
+                <input type="checkbox" name="is_admin">
+              </div>
+
+              <button type="submit" class="btn verde">Salvar</button>
+          </form>
+
+      </div>
+
+  </main>
+
+  <footer class="rodape">
+      Cantina Inteligente
+  </footer>
+
+</body>
+</html>

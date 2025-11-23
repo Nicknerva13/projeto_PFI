@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Usuário</title>
+
+  <!-- CSS externo -->
+  <link rel="stylesheet" href="{% static 'CSS/style_editar_usuarios.css' %}">
+</head>
+
+<body>
+
+  <!-- TOPO -->
+  <header class="topo">
+      <button class="btn-voltar" onclick="window.location.href='{% url 'listar_usuarios' %}'">←</button>
+      <h1>Editar Usuário</h1>
+      <img src="{% static 'media/logo.png' %}" class="logo-topo" alt="Logo">
+  </header>
+
+  <main class="conteudo">
+
+      <div class="card-container">
+
+          <form method="post" class="form-editar">
+              {% csrf_token %}
+
+              <label>Nome:</label>
+              {{ form.nome }}
+
+              <label>Matrícula:</label>
+              {{ form.matricula }}
+
+              <label>Telefone:</label>
+              {{ form.telefone }}
+
+              <label>Telefone do Responsável:</label>
+              {{ form.telefone_responsavel }}
+
+              <label>Email:</label>
+              {{ form.email }}
+
+              <label>Senha:</label>
+              {{ form.senha }}
+
+              <label>{{ form.is_admin.label }}:</label>
+              {{ form.is_admin }}
+
+              <button type="submit" class="btn verde">Atualizar</button>
+          </form>
+
+      </div>
+
+  </main>
+
+  <footer class="rodape">
+      Cantina Inteligente
+  </footer>
+
+</body>
+</html>

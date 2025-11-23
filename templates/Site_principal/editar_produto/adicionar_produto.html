@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adicionar Produto - Cantina Inteligente</title>
+
+  <link rel="stylesheet" href="{% static 'CSS/style_adicionar_produto.css' %}">
+</head>
+
+<body>
+
+  <!-- TOPO -->
+  <header class="topo">
+
+    <!-- Botão de Voltar ESQUERDA -->
+    <a href="{% url 'listar_produtos' %}" class="btn-voltar-topo">← Voltar</a>
+
+    <!-- Título central -->
+    <h1>Adicionar Produto</h1>
+
+    <!-- Logo DIREITA -->
+    <img src="{% static 'media/logo.png' %}" class="logo-topo" alt="Logo">
+
+  </header>
+
+  <!-- FORMULÁRIO -->
+  <main>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <label>Nome:</label>
+      <input type="text" name="nome" required>
+
+      <label>Preço de Compra:</label>
+      <input type="number" name="preco_compra" step="0.01" required>
+
+      <label>Preço de Venda:</label>
+      <input type="number" name="preco_venda" step="0.01" required>
+
+      <label>Estoque Inicial:</label>
+      <input type="number" name="estoque" required>
+
+      <label>Foto do Produto:</label>
+      <input type="file" name="foto" accept="image/*">
+
+      <button type="submit" class="btn-salvar">Adicionar</button>
+    </form>
+
+  </main>
+
+  <!-- RODAPÉ FIXO -->
+  <footer>
+    Cantina-Inteligente
+  </footer>
+
+</body>
+</html>

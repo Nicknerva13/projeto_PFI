@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Painel Administrativo - Cantina Inteligente</title>
+  <link rel="stylesheet" href="{% static 'CSS/style_admin.css' %}">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="topo">
+
+    <!-- PERFIL À ESQUERDA -->
+    <div class="perfil" onclick="toggleMenu()">
+      {% if usuario.foto %}
+        <img src="{{ usuario.foto.url }}" alt="Perfil">
+      {% else %}
+        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Perfil">
+      {% endif %}
+    </div>
+
+    <!-- TÍTULO CENTRAL -->
+    <h1>Bem-vindo, {{ usuario.nome }}</h1>
+
+    <!-- LOGO À DIREITA -->
+    <img src="{% static 'media/logo.png' %}" class="logo-topo" alt="Logo">
+
+    <!-- DROPDOWN -->
+    <div class="dropdown" id="menu">
+      <button class="btn azul" onclick="window.location.href='{% url 'editar_meus_dados_adm' %}'">Editar Meus Dados</button>
+      <button class="btn vermelho" onclick="window.location.href='{% url 'deslogar' %}'">Deslogar</button>
+    </div>
+
+  </header>
+
+  <!-- TUDO QUE DEVE BORRAR FICA AQUI -->
+  <div id="conteudo">
+
+    <!-- MAIN -->
+    <main>
+      <div class="cards-container">
+
+        <div class="card" onclick="window.location.href='{% url 'vendas' %}'">
+          <span class="icon">🛒</span>
+          <p>Realizar Venda</p>
+        </div>
+
+        <div class="card" onclick="window.location.href='{% url 'minhas_dividas' %}'">
+          <span class="icon">💰</span>
+          <p>Dívidas</p>
+        </div>
+
+        <div class="card" onclick="window.location.href='{% url 'historico_adm' %}'">
+          <span class="icon">⏰</span>
+          <p>Histórico</p>
+        </div>
+
+        <div class="card" onclick="window.location.href='{% url 'gerar_relatorio' %}'">
+          <span class="icon">📄</span>
+          <p>Gerar Relatório</p>
+        </div>
+
+        <button class="card especial verde" onclick="window.location.href='{% url 'editar_carrossel' %}'">
+          <p>Editar Carrossel</p>
+        </button>
+
+        <button class="card especial azul" onclick="window.location.href='{% url 'listar_usuarios' %}'">
+          <p>Editar Usuários</p>
+        </button>
+
+        <button class="card especial verde" onclick="window.location.href='{% url 'listar_produtos' %}'">
+          <p>Editar Produtos</p>
+        </button>
+
+      </div>
+    </main>
+
+    <footer>
+      Cantina-Inteligente
+    </footer>
+
+  </div> <!-- fim do conteudo -->
+
+  <script src="{% static 'JS/script_admin.js' %}"></script>
+</body>
+</html>

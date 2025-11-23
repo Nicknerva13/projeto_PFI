@@ -1,0 +1,56 @@
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'CSS/style_dividas_adm.css' %}">
+<!-- TOPO -->
+<header class="topo">
+    <button class="btn-voltar" onclick="location.href='{% url 'adm_dashboard' %}'">←</button>
+
+    <h1>Dívidas dos Usuários</h1>
+
+    <img src="{% static 'media/logo.png' %}" class="logo-topo" alt="Logo">
+</header>
+
+<main class="conteudo">
+
+    <div class="card-container">
+
+        <table class="tabela">
+            <thead>
+                <tr>
+                    <th>Usuário</th>
+                    <th>Total Devido</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for item in dados %}
+                <tr>
+                    <td>{{ item.usuario.nome }}</td>
+                    <td>R$ {{ item.total_devido|floatformat:2 }}</td>
+                    <td>
+                        {% if item.total_devido > 0 %}
+                            <a href="{% url 'registrar_pagamento' item.usuario.matricula %}" class="btn-acao verde">
+                                Registrar Pagamento
+                            </a>
+                        {% else %}
+                            <span class="sem-divida">Sem dívida</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+
+    </div>
+
+</main>
+
+<!-- RODAPÉ -->
+<footer class="rodape">
+    Cantina Inteligente
+</footer>
+
+{% endblock %}

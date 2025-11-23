@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Editar Carrossel - Cantina Inteligente</title>
+
+  <!-- CSS externo -->
+  <link rel="stylesheet" href="{% static 'CSS/style_carrossel.css' %}">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="topo">
+
+    <!-- Botão de voltar -->
+    <button class="btn-voltar" onclick="window.location.href='{% url 'adm_dashboard' %}'">←</button>
+
+    <!-- Título -->
+    <h1>Editar Carrossel</h1>
+
+    <!-- Logo -->
+    <img src="{% static 'media/logo.png' %}" class="logo" alt="Logo">
+
+  </header>
+
+  <!-- MAIN -->
+  <main>
+    <div class="cards-container">
+      {% for imagem in imagens %}
+      <div class="card especial verde">
+
+        <img src="{{ imagem.imagem.url }}" alt="{{ imagem.titulo }}">
+
+        <p>{{ imagem.titulo }}</p>
+
+        <!-- Checkbox -->
+        <label class="switch-label">
+          <input type="checkbox" data-id="{{ imagem.id }}" {% if imagem.ativo %}checked{% endif %} onchange="toggleImagem(this)">
+          Ativar na página inicial
+        </label>
+
+        <!-- Botão editar -->
+        <button class="btn azul" onclick="window.location.href='{% url 'editar_imagem' imagem.id %}'">Editar</button>
+
+      </div>
+      {% empty %}
+        <p>Nenhuma imagem cadastrada.</p>
+      {% endfor %}
+    </div>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="rodape">
+
+    <!-- Botão adicionar imagem (esquerda) -->
+    <button class="btn verde add-btn" onclick="window.location.href='{% url 'adicionar_imagem' %}'">
+      Adicionar Imagem
+    </button>
+
+    <span class="rodape-texto">Cantina Inteligente</span>
+  </footer>
+
+  <!-- JS externo -->
+  <script src="{% static 'JS/script_carrossel.js' %}" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cantina Inteligente - Vendas</title>
+
+    <!-- CSS externo -->
+    <link rel="stylesheet" href="{% static 'CSS/style_vendas.css' %}">
+</head>
+
+<body>
+
+<!-- 🔵 Barra Superior -->
+<header class="top-bar">
+    <button class="btn-voltar" onclick="location.href='{% url 'adm_dashboard' %}'">←</button>
+
+    <h1 class="titulo-pagina">Registrar Venda</h1>
+
+    <img src="{% static 'media/logo.png' %}" alt="Logo" class="logo-topo">
+</header>
+
+<!-- 🔽 Conteúdo Principal -->
+<main>
+
+    <!-- Buscar Usuário -->
+    <h2>Buscar Usuário</h2>
+
+    <label>Matrícula ou Nome:</label>
+    <input type="text" id="matricula" oninput="autoCompletar()">
+
+    <div id="autoResultados"
+         class="autocomplete-box">
+    </div>
+
+    <div id="dadosUsuario" class="saldo-info"></div>
+    <hr>
+
+    <!-- Produtos -->
+    <h3>Produtos</h3>
+
+    <div class="produtos">
+        {% for produto in produtos %}
+            <div class="produto"
+                data-id="{{ produto.id }}"
+                data-nome="{{ produto.nome }}"
+                data-preco="{{ produto.preco_venda }}"
+                data-estoque="{{ produto.estoque }}"
+                data-foto="{% if produto.foto %}{{ produto.foto.url }}{% else %}{% static 'media/Sem_foto.jpeg' %}{% endif %}">
+
+                <img src="{% if produto.foto %}{{ produto.foto.url }}{% else %}{% static 'media/Sem_foto.jpeg' %}{% endif %}" alt="{{ produto.nome }}">
+
+                <p>{{ produto.nome }}<br>R$ {{ produto.preco_venda|floatformat:2 }}</p>
+                <p><strong>Estoque: {{ produto.estoque }}</strong></p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="quantidade-add">
+        Quantidade:
+        <input type="number" id="quantidade" min="1" value="1">
+        <button onclick="adicionarProduto()">Adicionar</button>
+    </div>
+
+    <!-- Carrinho -->
+    <div class="carrinho">
+        <h2>Carrinho</h2>
+
+        <table id="tabelaVendas">
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Quantidade</th>
+                    <th>Preço</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <h3>Total: R$ <span id="total">0.00</span></h3>
+
+        <h3>Método de Pagamento</h3>
+        <select id="metodoPagamento">
+            <option value="fiado">Anotar (Fiar)</option>
+            <option value="pix">PIX</option>
+            <option value="dinheiro">Dinheiro</option>
+        </select>
+
+        <button onclick="finalizarVenda()">Finalizar Venda</button>
+    </div>
+
+</main>
+
+<!-- 🟢 Rodapé -->
+<footer class="rodape">
+    Cantina Inteligente
+</footer>
+
+<!-- Script externo -->
+<script src="{% static 'JS/script_vendas.js' %}" defer></script>
+
+</body>
+</html>

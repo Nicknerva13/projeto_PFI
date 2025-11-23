@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Minhas Dívidas</title>
+  <link rel="stylesheet" href="{% static 'CSS/style_minhas_dividas_cliente.css' %}">
+</head>
+<body>
+
+<!-- TOPO -->
+<header class="topo">
+
+  <!-- Botão Voltar -->
+  <a href="{% url 'cliente' %}" class="btn-voltar">←</a>
+
+  <h1>Minhas Dívidas</h1>
+
+  <!-- Logo -->
+  <img src="{% static 'MEDIA/logo.png' %}" class="logo-topo" alt="logo">
+
+</header>
+
+<main class="conteudo">
+
+  <!-- RESUMO -->
+  <div class="resumo-container">
+    <h3>Resumo</h3>
+
+    <p><strong>Total devido:</strong> R$ {{ total_devido|floatformat:2 }}</p>
+    <p><strong>Limite total:</strong> R$ {{ limite }}</p>
+    <p><strong>Limite disponível:</strong> R$ {{ limite_restante|floatformat:2 }}</p>
+  </div>
+
+  <hr class="linha">
+
+  <!-- LISTA DE DIVIDAS -->
+  {% if detalhes %}
+    <h3>Compras não pagas</h3>
+
+    {% for venda in detalhes %}
+    <div class="compra-card">
+      <h4>Venda #{{ venda.id }} — {{ venda.data|date:"d/m/Y H:i" }}</h4>
+      <p><strong>Total da venda:</strong>
+      R$ {{ venda.valor_total|floatformat:2 }}</p>
+
+      <ul>
+        {% for item in venda.itens %}
+        <li>
+          {{ item.produto }} — {{ item.quantidade }} un —
+          R$ {{ item.preco|floatformat:2 }} cada —
+          <strong>Total: R$ {{ item.total_item|floatformat:2 }}</strong>
+        </li>
+        {% endfor %}
+      </ul>
+
+    </div>
+    {% endfor %}
+
+  {% else %}
+    <p>Você não possui dívidas.</p>
+  {% endif %}
+
+</main>
+
+<footer class="rodape">
+  Cantina Inteligente
+</footer>
+
+</body>
+</html>

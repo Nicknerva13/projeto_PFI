@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adicionar Estoque - Cantina Inteligente</title>
+
+  <!-- CSS PADRONIZADO -->
+  <link rel="stylesheet" href="{% static 'CSS/style_adicionar_estoque.css' %}">
+</head>
+<body>
+
+<header>
+  <a href="{% url 'listar_produtos' %}" class="btn-voltar">← Voltar</a>
+  <h1>Adicionar Estoque</h1>
+  <img src="{% static 'media/logo.png' %}" class="logo-topo" alt="Logo">
+</header>
+
+<main>
+    <div class="card">
+        <h2>{{ produto.nome }}</h2>
+
+        <p class="estoque-atual">
+            <strong>Estoque atual:</strong> {{ produto.estoque }}
+        </p>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <label for="quantidade">Quantidade a adicionar:</label>
+            <input type="number" id="quantidade" name="quantidade" min="1" required>
+
+            <button type="submit" class="btn-salvar">Adicionar</button>
+        </form>
+    </div>
+</main>
+
+<footer>
+  Cantina-Inteligente
+</footer>
+
+</body>
+</html>

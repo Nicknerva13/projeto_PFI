@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciar Usuários</title>
+  <link rel="stylesheet" href="{% static 'CSS/style_gerenciar_usuarios.css' %}">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="topo">
+      <button class="btn-voltar" onclick="window.location.href='{% url 'adm_dashboard' %}'">←</button>
+      <h1>Gerenciar Usuários</h1>
+      <img src="{% static 'media/logo.png' %}" class="logo-topo" alt="Logo">
+  </header>
+
+
+  <main class="conteudo">
+
+      <!-- BOTÃO ADICIONAR CENTRALIZADO -->
+      <div class="area-botao-centro">
+          <a href="{% url 'adicionar_usuario' %}" class="btn azul grande">+ Adicionar Usuário</a>
+      </div>
+
+      <div class="card-container">
+          <table class="tabela">
+              <thead>
+                  <tr>
+                      <th>Nome</th>
+                      <th>Matrícula</th>
+                      <th>Email</th>
+                      <th>Telefone</th>
+                      <th>É Admin?</th>
+                      <th>Ações</th>
+                  </tr>
+              </thead>
+
+              <tbody>
+                  {% for usuario in usuarios %}
+                  <tr>
+                      <td>{{ usuario.nome }}</td>
+                      <td>{{ usuario.matricula }}</td>
+                      <td>{{ usuario.email }}</td>
+                      <td>{{ usuario.telefone }}</td>
+                      <td>{% if usuario.is_admin %}✅{% else %}❌{% endif %}</td>
+
+                      <td>
+                          <a href="{% url 'editar_usuario' usuario.id %}" class="btn azul">Editar</a>
+                          <a href="{% url 'excluir_usuario' usuario.id %}" class="btn vermelho"
+                             onclick="return confirm('Deseja realmente excluir este usuário?')">Excluir</a>
+                      </td>
+                  </tr>
+                  {% empty %}
+                  <tr><td colspan="6">Nenhum usuário encontrado.</td></tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+      </div>
+
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="rodape">
+      Cantina Inteligente
+  </footer>
+
+</body>
+</html>

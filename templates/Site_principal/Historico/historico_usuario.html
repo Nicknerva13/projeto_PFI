@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Meu Histórico</title>
+    <link rel="stylesheet" href="{% static 'CSS/style_historico_cliente.css' %}">
+</head>
+<body>
+
+<header class="topo">
+
+    <!-- Botão Voltar -->
+    <a href="{% url 'cliente' %}" class="btn-voltar">←</a>
+
+    <h1>Meu Histórico</h1>
+
+    <!-- Logo -->
+    <img src="{% static 'MEDIA/logo.png' %}" class="logo-topo" alt="logo">
+
+</header>
+
+<main class="conteudo">
+
+    {% if historico %}
+
+        {% for venda in historico %}
+
+        <div class="card">
+
+            <h3>Compra #{{ venda.id }} — {{ venda.data|date:"d/m/Y H:i" }}</h3>
+
+            <p><strong>Total:</strong> R$ {{ venda.valor_total|floatformat:2 }}</p>
+            <p><strong>Pagamento:</strong> {{ venda.metodo_pagamento }}</p>
+
+            <ul>
+                {% for item in venda.itens.all %}
+                <li>
+                    {{ item.produto.nome }} — {{ item.quantidade }}x —
+                    <strong>R$ {{ item.preco_unitario|floatformat:2 }}</strong>
+
+                </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p class="sem-compras">Você ainda não realizou compras.</p>
+
+    {% endif %}
+
+</main>
+
+<footer class="rodape">
+    Cantina Inteligente
+</footer>
+
+</body>
+</html>
