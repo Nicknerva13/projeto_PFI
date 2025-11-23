@@ -1,0 +1,135 @@
+/* ======= CORE COLORS ======= */
+:root {
+  --cor-fundo: #90CAF9;
+  --cor-topo: #4db6ac;
+  --cor-card: #2196f3;
+  --cor-rodape: #4caf50;
+  --cor-botao-voltar: #3f51b5;
+  --cor-texto-claro: #ffffff;
+  --cor-preto: #000000;
+}
+
+/* ======= RESET ======= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* ======= BODY ======= */
+body {
+  background: var(--cor-fundo);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ======= HEADER ======= */
+header {
+  background: var(--cor-topo);
+  padding: 15px 20px;
+  text-align: center;
+  position: relative;
+}
+
+header h1 {
+  color: var(--cor-preto);
+  font-size: 1.6em;
+}
+
+/* BOTÃO VOLTAR */
+.btn-voltar {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--cor-botao-voltar);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* LOGO */
+.logo-topo {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  object-fit: contain;
+}
+
+/* ======= MAIN ======= */
+main {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/* CARD CENTRAL */
+.card {
+  background: white;
+  width: 90%;
+  max-width: 450px;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+.card h2 {
+  margin-bottom: 10px;
+  font-size: 1.4em;
+}
+
+.estoque-atual {
+  margin-bottom: 20px;
+  font-size: 1.1em;
+}
+
+/* FORMULÁRIO */
+label {
+  font-weight: bold;
+  text-align: left;
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+
+/* BOTÃO SALVAR */
+.btn-salvar {
+  width: 100%;
+  background: #4CAF50;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.btn-salvar:hover {
+  background: #439a46;
+}
+
+/* ======= FOOTER ======= */
+footer {
+  background: var(--cor-rodape);
+  color: white;
+  text-align: center;
+  padding: 12px;
+  margin-top: auto;
+  font-weight: bold;
+}

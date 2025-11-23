@@ -1,0 +1,172 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #90CAF9;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* TOPO */
+.top-bar {
+  background-color: #4db6ac;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Impede quebra de linha */
+  padding: 10px 15px;
+  color: black;
+}
+
+.btn-voltar {
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: bold;
+  background: white;
+  padding: 4px 12px;
+  border-radius: 8px;
+  color: black;
+  flex-shrink: 0; /* NÃO deixa quebrar linha */
+}
+
+.top-bar h1 {
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.logo {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0; /* impede de pular linha */
+}
+
+/* CONTEÚDO */
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.text-section {
+  max-width: 450px;
+  width: 100%;
+  background-color: #2196f3;
+  padding: 30px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome-text {
+  font-size: 1.2rem;
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.form-section {
+  background-color: #2196f3;
+  border-radius: 16px;
+  padding: 30px;
+  max-width: 450px;
+  width: 100%;
+}
+
+.form-registrar {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-registrar label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #6b4d4d;
+}
+
+.form-registrar input {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  outline: none;
+}
+
+.form-registrar input::placeholder {
+  color: #999;
+}
+
+/* BOTÃO */
+.btn.registrar {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.btn.registrar:hover {
+  background-color: #333;
+}
+
+/* RODAPÉ */
+.footer {
+  background-color: #4caf50;
+  color: white;
+  padding: 15px 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .text-section,
+  .form-section {
+    max-width: 100%;
+  }
+
+  .top-bar h1 {
+    font-size: 1.2rem;
+  }
+
+
+  .btn-voltar {
+    font-size: 1.5rem;
+    padding: 5px 10px;
+  }
+
+  .logo {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+.logo-topo {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  position: absolute;
+  right: 15px;
+}

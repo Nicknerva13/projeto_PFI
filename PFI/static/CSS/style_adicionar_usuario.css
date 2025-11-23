@@ -1,0 +1,139 @@
+/* ========== CORES PADRÃO ========== */
+:root {
+  --cor-fundo: #90CAF9;
+  --cor-topo: #4db6ac;
+  --cor-botao-voltar: #3f51b5;
+  --cor-card: #2196f3;
+  --cor-rodape: #4caf50;
+  --cor-texto-claro: #ffffff;
+  --cor-preto: #000000;
+}
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--cor-fundo);
+}
+
+/* TOPO */
+.topo {
+  background: var(--cor-topo);
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-weight: bold;
+}
+
+.topo h1 {
+  color: var(--cor-preto);
+  font-size: 1.3rem;
+}
+
+.btn-voltar {
+  position: absolute;
+  left: 15px;
+  background: var(--cor-botao-voltar);
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.logo-topo {
+  position: absolute;
+  right: 15px;
+  width: 45px;
+  height: 45px;
+}
+
+/* CONTEÚDO */
+.conteudo {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.card-container {
+  width: 90%;
+  max-width: 450px;
+  background: var(--cor-card);
+  padding: 25px;
+  border-radius: 14px;
+  color: white;
+}
+
+.messages li {
+  color: yellow;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* FORMULÁRIO */
+.form-adicionar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-adicionar label {
+  font-weight: bold;
+}
+
+.form-adicionar input {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+}
+
+.linha-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* BOTÕES */
+.btn {
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  display: block;
+  margin-top: 10px;
+  text-decoration: none;
+}
+
+.btn.verde {
+  background: #43a047;
+  color: white;
+}
+
+.btn.cinza {
+  background: #9e9e9e;
+  color: white;
+}
+
+/* RODAPÉ */
+.rodape {
+  background: var(--cor-rodape);
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-weight: bold;
+}

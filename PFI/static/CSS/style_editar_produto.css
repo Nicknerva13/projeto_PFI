@@ -1,0 +1,123 @@
+/* ======= CORES DO SISTEMA ======= */
+:root {
+  --cor-fundo: #90CAF9;
+  --cor-topo: #4db6ac;
+  --cor-botao-voltar: #3f51b5;
+  --cor-card: #2196f3;
+  --cor-texto-claro: #ffffff;
+  --cor-preto: #000000;
+}
+
+/* ======= RESET ======= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* ======= BODY ======= */
+body {
+  background: var(--cor-fundo);
+  min-height: 100vh;
+}
+
+/* ======= HEADER ======= */
+header {
+  background: var(--cor-topo);
+  padding: 15px 20px;
+  position: relative;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  color: var(--cor-preto);
+  font-size: 1.6em;
+}
+
+/* BOTÃO VOLTAR */
+.btn-voltar {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--cor-botao-voltar);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+/* LOGO */
+.logo-topo {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-65%);
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+/* ======= MAIN ======= */
+main {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* ======= FORMULÁRIO ======= */
+form {
+  background: #ffffff;
+  width: 90%;
+  max-width: 450px;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.15);
+}
+
+label {
+  font-weight: bold;
+  margin-top: 15px;
+  display: block;
+  font-size: 14px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* FOTO DO PRODUTO */
+img {
+  width: 150px;
+  border-radius: 8px;
+  margin-top: 10px;
+  display: block;
+}
+
+/* BOTÃO SALVAR */
+button {
+  width: 100%;
+  margin-top: 20px;
+  background: #28a745;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #218838;
+}

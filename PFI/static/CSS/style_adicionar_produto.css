@@ -1,0 +1,133 @@
+/* ========== CORES PADRÃO DO SISTEMA ========== */
+:root {
+  --cor-fundo: #90CAF9;
+  --cor-topo: #4db6ac;
+  --cor-card: #2196f3;
+  --cor-rodape: #4caf50;
+  --cor-texto-claro: #ffffff;
+  --cor-preto: #000000;
+}
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: var(--cor-fundo);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* HEADER */
+.topo {
+  position: relative;
+  background: var(--cor-topo);
+  padding: 18px 20px;
+  text-align: center;
+}
+
+/* TÍTULO */
+.topo h1 {
+  font-size: 1.4em;
+  color: var(--cor-preto);
+}
+
+/* BOTÃO VOLTAR - CANTO ESQUERDO */
+.btn-voltar-topo {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #3f51b5;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.btn-voltar-topo:hover {
+  background: #303f9f;
+}
+
+/* LOGO DIREITA */
+.logo-topo {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+}
+
+    /* ÁREA PRINCIPAL */
+    main {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+      padding: 20px;
+    }
+
+ /* FORMULÁRIO CENTRAL */
+    form {
+      background: #fff;
+      width: 90%;
+      max-width: 450px;  /* AGORA COM TAMANHO PERFEITO */
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.2);
+    }
+
+    /* LABELS E INPUTS */
+    label {
+      display: block;
+      margin-top: 18px;
+      font-weight: bold;
+      font-size: 1.05em;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+
+/* BOTÃO SALVAR */
+.btn-salvar {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background: var(--cor-card);
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-salvar:hover {
+  background: #1976d2;
+}
+
+/* RODAPÉ FIXO */
+footer {
+  background: var(--cor-rodape);
+  color: white;
+  text-align: center;
+  padding: 12px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  font-weight: bold;
+}

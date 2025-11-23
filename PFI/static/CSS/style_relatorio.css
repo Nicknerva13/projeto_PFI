@@ -1,0 +1,157 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #90CAF9;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* TOPO */
+.topo {
+    background: #4db6ac;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.topo h1 {
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Botão voltar */
+.btn-voltar {
+    position: absolute;
+    left: 15px;
+    background: #3f51b5;
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* Logo */
+.logo-topo {
+    position: absolute;
+    right: 15px;
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+/* CONTEÚDO */
+.conteudo {
+    flex: 1;
+    padding: 25px;
+}
+
+/* Controles */
+.controls {
+    background: #2196f3;
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-bottom: 25px;
+}
+
+.controls select {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: none;
+}
+
+/* Botões */
+.btn {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+}
+
+.btn.azul { background: #1565c0; }
+.btn.verde { background: #2e7d32; }
+.btn.vermelho { background: #c62828; }
+
+.btn:hover {
+    opacity: .9;
+}
+
+/* Tabelas */
+.tables-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 25px;
+}
+
+.table-wrap {
+    background: #2196f3;
+    padding: 20px;
+    border-radius: 12px;
+    color: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    max-height: 420px;
+    overflow-y: auto;
+}
+
+.table-wrap h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    color: black;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th {
+    background: #0d47a1;
+    color: white;
+    padding: 10px;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+
+tr:hover {
+    background: #e3f2fd;
+}
+
+/* RODAPÉ */
+.rodape {
+    background: #4caf50;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    bottom: 0;
+    width: 100%;
+}

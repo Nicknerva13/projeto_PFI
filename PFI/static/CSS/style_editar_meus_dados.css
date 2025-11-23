@@ -1,0 +1,147 @@
+/* ======= CORES PADRÃO ======= */
+:root {
+    --cor-fundo: #90CAF9;
+    --cor-topo: #4db6ac;
+    --cor-card: #ffffff;
+    --cor-botao-voltar: #3f51b5;
+    --cor-rodape: #4caf50;
+    --cor-texto-escuro: #000;
+}
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* BODY */
+body {
+    background: var(--cor-fundo);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HEADER */
+header {
+    background: var(--cor-topo);
+    padding: 15px 20px;
+    text-align: center;
+    position: relative;
+}
+
+header h1 {
+    color: var(--cor-texto-escuro);
+}
+
+/* Botão Voltar */
+.btn-voltar {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--cor-botao-voltar);
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+/* Logo */
+.logo {
+    width: 55px;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* MAIN */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* CARD CONTAINER */
+.container {
+    background: var(--cor-card);
+    width: 90%;
+    max-width: 420px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #0004;
+}
+
+/* FOTO */
+.foto-usuario {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.foto-usuario img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* TEXTOS */
+label {
+    font-weight: bold;
+    display: block;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    margin-bottom: 15px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+}
+
+input[readonly] {
+    background: #eaeaea;
+    cursor: not-allowed;
+}
+
+/* MENSAGENS */
+.msg {
+    text-align: center;
+    margin-bottom: 10px;
+    color: red;
+}
+
+/* BOTÃO SALVAR */
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: #0066ff;
+    color: white;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #004ecc;
+}
+
+/* FOOTER */
+footer {
+    background: var(--cor-rodape);
+    color: white;
+    text-align: center;
+    padding: 12px;
+    font-weight: bold;
+    margin-top: 40px;
+}

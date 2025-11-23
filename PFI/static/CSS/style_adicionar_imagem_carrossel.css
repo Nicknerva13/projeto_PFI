@@ -1,0 +1,124 @@
+/* ========== CORES PADRÃO DO SISTEMA ========== */
+:root {
+  --cor-fundo: #90CAF9;
+  --cor-topo: #4db6ac;
+  --cor-botao-voltar: #3f51b5;
+  --cor-card: #2196f3;
+  --cor-rodape: #4caf50;
+  --cor-texto-claro: #ffffff;
+  --cor-preto: #000000;
+}
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--cor-fundo);
+}
+
+/* ========== HEADER ========== */
+.topo {
+  background: var(--cor-topo);
+  color: var(--cor-preto);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-weight: bold;
+}
+
+.topo h1 {
+  font-size: 1.3em;
+}
+
+/* Botão voltar */
+.btn-voltar {
+  position: absolute;
+  left: 15px;
+  font-size: 22px;
+  font-weight: bold;
+  background: var(--cor-botao-voltar);
+  color: var(--cor-texto-claro);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Logo */
+.logo {
+  position: absolute;
+  right: 15px;
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
+
+/* ========== MAIN ========== */
+main {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-container {
+  background: var(--cor-card);
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 420px;
+}
+
+/* ========== FORMULÁRIO ========== */
+.form-editar {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: var(--cor-texto-claro);
+  font-weight: bold;
+}
+
+.form-editar input[type="text"],
+.form-editar input[type="file"] {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+}
+
+/* ========== BOTÕES ========== */
+.btn {
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1em;
+}
+
+.btn.verde {
+  background: var(--cor-rodape);
+  color: white;
+}
+
+/* ========== RODAPÉ ========== */
+.rodape {
+  background: var(--cor-rodape);
+  text-align: center;
+  padding: 12px;
+  color: white;
+  font-weight: bold;
+}

@@ -1,0 +1,149 @@
+/* ========== CORES DO SISTEMA ========== */
+:root {
+  --cor-fundo: #90CAF9;
+  --cor-topo: #4db6ac;
+  --cor-card: #2196f3;
+  --cor-rodape: #4caf50;
+  --cor-texto-claro: #ffffff;
+  --cor-preto: #000000;
+}
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* BODY */
+body {
+  background: var(--cor-fundo);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* HEADER */
+.topo {
+  background: var(--cor-topo);
+  padding: 20px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.3em;
+  color: var(--cor-preto);
+}
+
+/* MAIN */
+main {
+  padding: 20px;
+  max-width: 900px;
+  width: 100%;
+  margin: auto;
+  padding-bottom: 80px; /* espaço por causa do rodapé fixo */
+}
+
+/* BOTÕES SUPERIORES */
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 10px 15px;
+  border-radius: 6px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn-voltar {
+  background: #3f51b5;
+}
+
+.btn-adicionar {
+  background: var(--cor-card);
+}
+
+/* TABELA */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th {
+  background: #e6e6e6;
+  padding: 12px;
+  text-align: left;
+  font-weight: bold;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* FOTO DO PRODUTO */
+.foto-produto {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* BOTÕES DA TABELA */
+.acoes button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+.btn-editar {
+  background: #4CAF50;
+}
+
+.btn-estoque {
+  background: #FF9800;
+}
+
+.btn-excluir {
+  background: #f44336;
+}
+
+/* FOOTER FIXO */
+footer {
+  background: var(--cor-rodape);
+  color: white;
+  text-align: center;
+  padding: 12px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  font-weight: bold;
+  z-index: 20;
+}
+
+/* RESPONSIVO */
+@media (max-width: 700px) {
+  table {
+    font-size: 13px;
+  }
+
+  .acoes button {
+    padding: 5px 7px;
+    font-size: 12px;
+  }
+
+  .btn-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

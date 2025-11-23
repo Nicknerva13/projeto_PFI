@@ -1,0 +1,186 @@
+/* ========== CORES PADRÃO DO SEU SISTEMA ========== */
+:root {
+  --cor-fundo: #90CAF9;
+  --cor-topo: #4db6ac;
+  --cor-botao-voltar: #3f51b5;
+  --cor-card: #2196f3;
+  --cor-rodape: #4caf50;
+  --cor-texto-claro: #ffffff;
+  --cor-preto: #000000;
+}
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--cor-fundo);
+}
+
+/* HEADER */
+header {
+  background: var(--cor-topo);
+  color: var(--cor-preto);
+  font-weight: bold;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 1.3rem;
+}
+
+/* FOTO DO PERFIL - ESQUERDA */
+header .perfil {
+  position: absolute;
+  left: 15px;
+  cursor: pointer;
+}
+
+.perfil img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+  background: white;
+  padding: 2px;
+}
+
+/* LOGO NO CANTO DIREITO */
+.logo-topo {
+  position: absolute;
+  right: 15px;
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+}
+
+/* DROPDOWN */
+.dropdown {
+  position: absolute;
+  top: 70px;
+  left: 15px;
+  background: white;
+  border-radius: 8px;
+  padding: 10px;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 100;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.dropdown.show {
+  display: flex;
+}
+
+/* BOTÕES */
+.btn {
+  border: none;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}
+
+.azul {
+  background: var(--cor-card);
+  color: var(--cor-texto-claro);
+}
+
+.vermelho {
+  background: red;
+  color: white;
+}
+
+/* MAIN */
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 218px;
+}
+
+/* CARDS */
+.cards-container {
+  background: var(--cor-card);
+  padding: 20px;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.card {
+  background: var(--cor-fundo);
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: .2s;
+  cursor: pointer;
+}
+
+.card:hover {
+  background: #6bb8e9;
+  transform: scale(1.05);
+}
+
+.icon {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+/* CARDS ESPECIAIS */
+.card.especial.verde {
+  background: var(--cor-topo);
+  color: white;
+}
+
+.card.especial.azul {
+  background: var(--cor-card);
+  color: white;
+}
+
+/* RODAPÉ */
+footer {
+  background: var(--cor-rodape);
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-weight: bold;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 600px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+/* FUNDO BORRADO AO ABRIR MENU */
+.blurred {
+  filter: blur(4px);
+  pointer-events: none;
+  user-select: none;
+}
